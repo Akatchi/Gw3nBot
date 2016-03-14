@@ -21,10 +21,10 @@ backend:
 
 gwenbot:
     build: gwenbot/
-    links:
-      - database:mysql
     volumes:
       - ./gwenbot/:/usr/src/app
+    environment:
+      - TOKEN=148826692:AAEi-Fs0snQK2uq-PhDz4ZqiAx5cXz-GIZ4
 
 database:
     image: mysql:5.7
