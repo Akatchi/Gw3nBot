@@ -11,4 +11,4 @@ RUN pip install -r /usr/src/app/requirements.txt
 
 RUN chmod -R a+rwx .
 
-RUN echo " hi "
+CMD ["python", "bot.py"]
