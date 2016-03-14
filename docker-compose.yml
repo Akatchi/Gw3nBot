@@ -1,0 +1,37 @@
+backend:
+  build: backend/
+  ports:
+    - 8080:8080
+  links:
+    - database:mysql
+  volumes:
+    - ./backend/:/usr/src/app
+    - ~/.m2:/root/.m2
+
+# Will work once there is code in the frontend folder 
+# frontend:
+    # build: frontend/
+    # ports:
+    #   - 9000:9000
+    #   - 35729:35729
+    # links:    
+    #   - backend:backend
+    # volumes:
+    #   - ./frontend/:/usr/src/app
+
+gwenbot:
+    build: gwenbot/
+    links:
+      - database:mysql
+    volumes:
+      - ./gwenbot/:/usr/src/app
+
+database:
+    image: mysql:5.7
+    volumes:
+      - ./database/:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Hr6Tf8XKuxwR11NQZwt5vScQgvllr5
+      - MYSQL_DATABASE=gw3nbot
+      - MYSQL_USER=gw3nbot
+      - MYSQL_PASSWORD=pf8fZPEndiMuNrqn4JRb2W39HfhRU2

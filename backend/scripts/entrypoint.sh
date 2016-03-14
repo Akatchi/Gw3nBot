@@ -1,0 +1,1 @@
+/mvn/bin/mvn spring-boot:run -Drun.jvmArguments="$JVM_ARGUMENTS"
