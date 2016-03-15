@@ -108,3 +108,14 @@ class CryCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         bot.sendMessage(msg['chat']['id'], "(ಥ﹏ಥ)")
+
+
+class BringItCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/bringit"
+        self.description = " ̿ ̿ ̿'̿'\̵͇̿̿\з=(•_•)=ε/̵͇̿̿/'̿'̿ ̿ "
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], " ̿ ̿ ̿'̿'\̵͇̿̿\з=(•_•)=ε/̵͇̿̿/'̿'̿ ̿ ")
