@@ -1,14 +1,4 @@
-from commands import *
+from commands import CommandLoader
 
 BOT_NAME = "@Gw3nBot"  # The botname (including the @!)
-commands = [  # A list of all the available commands
-    HelpCommand(),
-    ShrugCommand(),
-    MagicCommand(),
-    TableFlipCommand(),
-    TableResetCommand(),
-    SnipSnipCommand(),
-    CryCommand(),
-    BringItCommand(),
-    HanzeCommand(),
-]
+commands = CommandLoader().load_commands()  # All the commands the bot can use

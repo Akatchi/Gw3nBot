@@ -8,7 +8,7 @@ class CommandFactory(object):
 
         # Get the command that corresponds with the given query (if present)
         for command in commands:
-            if query == command.get_query():
+            if query in command.get_query():
                 return command
 
     """
