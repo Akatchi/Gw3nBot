@@ -97,3 +97,14 @@ class SnipSnipCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         bot.sendMessage(msg['chat']['id'], "( ＾◡＾)っ✂╰⋃╯")
+
+
+class CryCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/cry"
+        self.description = "(ಥ﹏ಥ)"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "(ಥ﹏ಥ)")

@@ -8,4 +8,5 @@ commands = [  # A list of all the available commands
     TableFlipCommand(),
     TableResetCommand(),
     SnipSnipCommand(),
+    CryCommand(),
 ]
