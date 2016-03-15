@@ -9,4 +9,5 @@ commands = [  # A list of all the available commands
     TableResetCommand(),
     SnipSnipCommand(),
     CryCommand(),
+    BringItCommand(),
 ]
