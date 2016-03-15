@@ -33,12 +33,67 @@ class Command(object):
         raise NotImplementedError("A subclass must implement this abstract method!")
 
 
-class HeyCommand(Command):
+class HelpCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
 
-        self.query = "/hey"
-        self.description = "A simple command to greet people!"
+        self.query = "/help"
+        self.description = "A list containing all commands."
 
     def execute(self, bot, msg, *args, **kwargs):
-        bot.sendMessage(msg['chat']['id'], "Heythere!!!")
+        bot.sendMessage(msg['chat']['id'], self.description)
+
+
+class ShrugCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/shrug"
+        self.description = "¯\\_(ツ)_/¯"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "¯\\_(ツ)_/¯")
+
+
+class MagicCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/magic"
+        self.description = "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕ヽ)"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕ヽ)")
+
+
+class TableFlipCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/tableflip"
+        self.description = "(╯°□°）╯︵ ┻━┻"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "(╯°□°）╯︵ ┻━┻")
+
+
+class TableResetCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/tablereset"
+        self.description = "┬──┬◡ﾉ(° -°ﾉ)"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "┬──┬◡ﾉ(° -°ﾉ)")
+
+
+class SnipSnipCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/snipsnip"
+        self.description = "( ＾◡＾)っ✂╰⋃╯"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "( ＾◡＾)っ✂╰⋃╯")

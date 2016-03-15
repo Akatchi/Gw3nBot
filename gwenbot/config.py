@@ -1,6 +1,11 @@
-from commands import HeyCommand
+from commands import HelpCommand, ShrugCommand, MagicCommand, TableFlipCommand, TableResetCommand, SnipSnipCommand
 
 BOT_NAME = "@Gw3nBot"  # The botname (including the @!)
 commands = [  # A list of all the available commands
-    HeyCommand(),
+    HelpCommand(),
+    ShrugCommand(),
+    MagicCommand(),
+    TableFlipCommand(),
+    TableResetCommand(),
+    SnipSnipCommand(),
 ]
