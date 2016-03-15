@@ -7,6 +7,8 @@
 
 .idea/*
 
+__pycache__/*
+
 ## File-based project format:
 *.iws
 

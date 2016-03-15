@@ -17,6 +17,23 @@ class Command(object):
         return self.query
 
     """
+    This method can be used by helper classes (for example the CommandLoader) to get the 'normalized' query
+    key which can abe used for ordering a list of objects.
+
+    This method transfers lists to a string by sorting the string and then taking the first element from the string
+    to make all the objects for the sorting method of the same instance (string)
+    """
+    def get_sorting_key(self):
+        sorting_key = self.query
+
+        if isinstance(sorting_key, list):
+            # If the sorting key is a list we will return the first (sorted) item from the list
+            # which can be used as sorting key
+            sorting_key = sorted(sorting_key)[0]
+
+        return sorting_key
+
+    """
     The description will be used by for example the /help command.
     It describes that the command does
     """
@@ -164,7 +181,8 @@ class CommandLoader(object):
         for command in command_strings:
             commands.append(self.__str_to_class(command)())
 
-        return commands
+        # Order all the commands into alphabetical order when saving them in the list and then return the commands
+        return sorted(commands, key=lambda x: str(x.get_sorting_key()), reverse=False)
 
     """
     This method converts a string to a class object
