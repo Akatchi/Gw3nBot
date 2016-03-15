@@ -119,3 +119,14 @@ class BringItCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         bot.sendMessage(msg['chat']['id'], " ̿ ̿ ̿'̿'\̵͇̿̿\з=(•_•)=ε/̵͇̿̿/'̿'̿ ̿ ")
+
+
+class HanzeCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/hanze"
+        self.description = "凸(-_-)凸"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        bot.sendMessage(msg['chat']['id'], "凸(-_-)凸")

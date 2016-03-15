@@ -10,4 +10,5 @@ commands = [  # A list of all the available commands
     SnipSnipCommand(),
     CryCommand(),
     BringItCommand(),
+    HanzeCommand(),
 ]
