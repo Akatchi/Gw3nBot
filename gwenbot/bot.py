@@ -1,6 +1,7 @@
 import os
 import time
 import telepot
+import logging
 
 from factory import CommandFactory
 
@@ -8,6 +9,9 @@ from factory import CommandFactory
 class TelegramBot(telepot.Bot):
     def on_chat_message(self, msg):
         content_type, chat_type, chat_id = telepot.glance(msg)
+
+        logging.info("Got a chat message: [content_type: {}] [chat_type: {}] [chat_id: {}] [msg: {}]"
+              .format(content_type, chat_type, chat_id, msg))
 
         # Sometimes the content_type is not text.
         # The bot can (at the moment) only process text messages
@@ -25,6 +29,9 @@ class TelegramBot(telepot.Bot):
 
 bot = TelegramBot(os.environ.get('TOKEN'))
 bot.notifyOnMessage()
+
+# Configure the logging:
+logging.basicConfig(filename='bot.log',level=logging.INFO)
 
 print('Listening ...')
 

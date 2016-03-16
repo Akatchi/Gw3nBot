@@ -1,5 +1,7 @@
 import sys
+from random import randint
 
+import requests
 import config
 
 
@@ -186,6 +188,63 @@ class AfstuderenCommand(Command):
         additional_args = get_additional_arguments(self)
 
         bot.sendMessage(msg['chat']['id'], "https://youtu.be/bPxxuGaqIjc " + additional_args)
+
+
+class FuckYouCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/fuckyou"
+        self.description = "Returns a 'fuckyou' gif."
+
+    def execute(self, bot, msg, *args, **kwargs):
+        fuckyou_gif = open('images/fuckyou.gif', 'rb')
+        bot.sendDocument(msg['chat']['id'], fuckyou_gif)
+
+
+class XkcdLatestCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/xlatest"
+        self.description = "Returns the latest xkcd comic!"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        xkcd = requests.get("http://xkcd.com/info.0.json").json()
+
+        bot.sendMessage(msg['chat']['id'], '' + str(xkcd['num']) + ' - ' + xkcd['title'] + '\n' +
+                        xkcd['img'] + '\n' + xkcd['alt'])
+
+
+class XkcdRandomCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/xrandom"
+        self.description = "Returns a random xkcd comic!"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        latest = requests.get("http://xkcd.com/info.0.json").json()
+        random_number = randint(1, latest['num'])
+        xkcd = requests.get("http://xkcd.com/{}/info.0.json".format(random_number)).json()
+
+        bot.sendMessage(msg['chat']['id'], '' + str(xkcd['num']) + ' - ' + xkcd['title'] + '\n' +
+                        xkcd['img'] + '\n' + xkcd['alt'])
+
+
+class XkcdByIDCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/x"
+        self.description = "Returns a xkcd comic for the given command (/x <id>)!"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        additional_args = get_additional_arguments(self)
+        xkcd = requests.get("http://xkcd.com/{}/info.0.json".format(additional_args)).json()
+
+        bot.sendMessage(msg['chat']['id'], '' + str(xkcd['num']) + ' - ' + xkcd['title'] + '\n' +
+                        xkcd['img'] + '\n' + xkcd['alt'])
 
 
 def get_additional_arguments(obj):
