@@ -185,7 +185,7 @@ class AfstuderenCommand(Command):
         # If we have additional arguments obtain them
         additional_args = get_additional_arguments(self)
 
-        bot.sendMessage(msg['chat']['id'], "https://youtu.be/bPxxuGaqIjc" + additional_args)
+        bot.sendMessage(msg['chat']['id'], "https://youtu.be/bPxxuGaqIjc " + additional_args)
 
 
 def get_additional_arguments(obj):
