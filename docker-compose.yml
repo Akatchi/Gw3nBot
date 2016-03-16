@@ -25,6 +25,7 @@ gwenbot:
       - ./gwenbot/:/usr/src/app
     environment:
       - TOKEN=148826692:AAEi-Fs0snQK2uq-PhDz4ZqiAx5cXz-GIZ4
+      - BOTNAME=Gw3nBot
 
 database:
     image: mysql:5.7
