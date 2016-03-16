@@ -1,5 +1,7 @@
 import sys
 
+import config
+
 
 class Command(object):
     """
@@ -78,7 +80,15 @@ class ShrugCommand(Command):
         self.description = "¯\\_(ツ)_/¯"
 
     def execute(self, bot, msg, *args, **kwargs):
-        bot.sendMessage(msg['chat']['id'], "¯\\_(ツ)_/¯")
+        # If we have additional arguments obtain them
+        additional_args = get_additional_arguments(self)
+
+        # Map the additional args to a empty string instead of None so we can always display it
+        # and we wont have to display None
+        if additional_args is None:
+            additional_args = ''
+
+        bot.sendMessage(msg['chat']['id'], "¯\\_(ツ)_/¯" + additional_args)
 
 
 class MagicCommand(Command):
@@ -122,7 +132,14 @@ class SnipSnipCommand(Command):
         self.description = "( ＾◡＾)っ✂╰⋃╯"
 
     def execute(self, bot, msg, *args, **kwargs):
-        bot.sendMessage(msg['chat']['id'], "( ＾◡＾)っ✂╰⋃╯")
+        # If we have additional arguments obtain them
+        additional_args = get_additional_arguments(self)
+
+        # Map the additional args to a empty string instead of None so we can always display it
+        if additional_args is None:
+            additional_args = ''
+
+        bot.sendMessage(msg['chat']['id'], "( ＾◡＾)っ✂╰⋃╯" + additional_args)
 
 
 class CryCommand(Command):
@@ -159,6 +176,32 @@ class HanzeCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         bot.sendMessage(msg['chat']['id'], "凸(-_-)凸")
+
+
+"""
+This method requires an object and will then check if this object has additional arguments.
+If this is the case it will parse those additional arguments and then return it as a string
+"""
+def get_additional_arguments(obj):
+    args = None
+
+    try:
+        # If the object has arguments parse them to a string and replace the values from the lookup table
+        if obj.args:
+            # Parse the list to a string
+            args = ' '.join(obj.args)
+
+            # Replace the items in the string with entries from the lookup table
+            for k, v in config.lookup_table:
+                args = args.replace(k, v)
+
+            # Reset the args in the object to reset its state
+            obj.args = None
+    except AttributeError:
+        # No additional args present so we can just skip the parsing
+        pass
+
+    return args
 
 
 ##############################################################

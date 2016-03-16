@@ -6,9 +6,24 @@ class CommandFactory(object):
     def get_command(query):
         query = CommandFactory.format_query(query)
 
+        # Get all the additional argument from the query (if present)
+        # args will contain a list of lowercased additional arguments
+        args = query.split(' ')
+
+        # If there are additional arguments present we have to set the query with the first
+        # entry from the list (otherwise its a multipart string for example: "/hey how are you doing" which
+        # Wont return a hit with the command.get_query() method.
+        if args:
+            query = args[0]
+            args.remove(args[0])
+
         # Get the command that corresponds with the given query (if present)
         for command in commands:
             if query in command.get_query():
+                # If there are additional arguments pass them to the command object
+                if args:
+                    command.args = args
+
                 return command
 
     """
