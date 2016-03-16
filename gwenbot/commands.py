@@ -1,3 +1,6 @@
+import sys
+
+
 class Command(object):
     """
     The constructor of the command object.
@@ -8,9 +11,27 @@ class Command(object):
 
     """
     The query is the keyword that triggers the command (for example /help)
+    This can also be a list to contain multiple aliases which will trigger the command
     """
     def get_query(self):
         return self.query
+
+    """
+    This method can be used by helper classes (for example the CommandLoader) to get the 'normalized' query
+    key which can abe used for ordering a list of objects.
+
+    This method transfers lists to a string by sorting the string and then taking the first element from the string
+    to make all the objects for the sorting method of the same instance (string)
+    """
+    def get_sorting_key(self):
+        sorting_key = self.query
+
+        if isinstance(sorting_key, list):
+            # If the sorting key is a list we will return the first (sorted) item from the list
+            # which can be used as sorting key
+            sorting_key = sorted(sorting_key)[0]
+
+        return sorting_key
 
     """
     The description will be used by for example the /help command.
@@ -41,7 +62,12 @@ class HelpCommand(Command):
         self.description = "A list containing all commands."
 
     def execute(self, bot, msg, *args, **kwargs):
-        bot.sendMessage(msg['chat']['id'], self.description)
+        help_text = 'Here are all my commands: \n\n'
+
+        for command in CommandLoader().load_commands():
+            help_text += "{} - {}\n".format(command.query, command.description)
+
+        bot.sendMessage(msg['chat']['id'], help_text)
 
 
 class ShrugCommand(Command):
@@ -125,8 +151,41 @@ class HanzeCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
 
-        self.query = "/hanze"
+        self.query = [
+            "/hanze",
+            "/harkema",
+        ]
         self.description = "凸(-_-)凸"
 
     def execute(self, bot, msg, *args, **kwargs):
         bot.sendMessage(msg['chat']['id'], "凸(-_-)凸")
+
+
+##############################################################
+### THE FOLLOWING PART MUST STAY AT THE BOTTOM OF THE FILE ###
+### THIS IS DUE TO THE WAY PYTHON LOADS THE FILES          ###
+##############################################################
+
+# A list containing all the commands as string
+command_strings = command_strings = [cls.__name__ for cls in vars()['Command'].__subclasses__()]
+
+
+class CommandLoader(object):
+    """
+    This method loads all the commands that subclass the Command object
+    After this is done a list with all the command objects will be returned
+    """
+    def load_commands(self):
+        commands = []
+
+        for command in command_strings:
+            commands.append(self.__str_to_class(command)())
+
+        # Order all the commands into alphabetical order when saving them in the list and then return the commands
+        return sorted(commands, key=lambda x: str(x.get_sorting_key()), reverse=False)
+
+    """
+    This method converts a string to a class object
+    """
+    def __str_to_class(self, str):
+        return getattr(sys.modules[__name__], str)
