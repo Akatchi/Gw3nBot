@@ -7,6 +7,7 @@ class Command(object):
     """
     The constructor of the command object.
     """
+
     def __init__(self, query=None, description=None):
         self.query = query
         self.description = description
@@ -15,6 +16,7 @@ class Command(object):
     The query is the keyword that triggers the command (for example /help)
     This can also be a list to contain multiple aliases which will trigger the command
     """
+
     def get_query(self):
         return self.query
 
@@ -25,6 +27,7 @@ class Command(object):
     This method transfers lists to a string by sorting the string and then taking the first element from the string
     to make all the objects for the sorting method of the same instance (string)
     """
+
     def get_sorting_key(self):
         sorting_key = self.query
 
@@ -39,6 +42,7 @@ class Command(object):
     The description will be used by for example the /help command.
     It describes that the command does
     """
+
     def get_description(self):
         return self.description
 
@@ -52,6 +56,7 @@ class Command(object):
     The constructor also takes a msg object as option parameter.
     This contains the information about the received message
     """
+
     def execute(self, bot=None, msg=None, *args, **kwargs):
         raise NotImplementedError("A subclass must implement this abstract method!")
 
@@ -82,11 +87,6 @@ class ShrugCommand(Command):
     def execute(self, bot, msg, *args, **kwargs):
         # If we have additional arguments obtain them
         additional_args = get_additional_arguments(self)
-
-        # Map the additional args to a empty string instead of None so we can always display it
-        # and we wont have to display None
-        if additional_args is None:
-            additional_args = ''
 
         bot.sendMessage(msg['chat']['id'], "¯\\_(ツ)_/¯" + additional_args)
 
@@ -135,10 +135,6 @@ class SnipSnipCommand(Command):
         # If we have additional arguments obtain them
         additional_args = get_additional_arguments(self)
 
-        # Map the additional args to a empty string instead of None so we can always display it
-        if additional_args is None:
-            additional_args = ''
-
         bot.sendMessage(msg['chat']['id'], "( ＾◡＾)っ✂╰⋃╯" + additional_args)
 
 
@@ -178,12 +174,26 @@ class HanzeCommand(Command):
         bot.sendMessage(msg['chat']['id'], "凸(-_-)凸")
 
 
-"""
-This method requires an object and will then check if this object has additional arguments.
-If this is the case it will parse those additional arguments and then return it as a string
-"""
+class AfstuderenCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/afstuderen"
+        self.description = "Displays a beautiful song with loads of emotions!"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        # If we have additional arguments obtain them
+        additional_args = get_additional_arguments(self)
+
+        bot.sendMessage(msg['chat']['id'], "https://youtu.be/bPxxuGaqIjc" + additional_args)
+
+
 def get_additional_arguments(obj):
-    args = None
+    """
+    This method requires an object and will then check if this object has additional arguments.
+    If this is the case it will parse those additional arguments and then return it as a string
+    """
+    args = ''
 
     try:
         # If the object has arguments parse them to a string and replace the values from the lookup table
@@ -218,6 +228,7 @@ class CommandLoader(object):
     This method loads all the commands that subclass the Command object
     After this is done a list with all the command objects will be returned
     """
+
     def load_commands(self):
         commands = []
 
@@ -230,5 +241,6 @@ class CommandLoader(object):
     """
     This method converts a string to a class object
     """
+
     def __str_to_class(self, str):
         return getattr(sys.modules[__name__], str)
