@@ -3,6 +3,7 @@ import time
 import telepot
 import logging
 
+import config
 from factory import CommandFactory
 
 
@@ -18,37 +19,14 @@ class TelegramBot(telepot.Bot):
         if not content_type == 'text':
             raise NotImplementedError
 
-        rnd = msg['from']
-        if rnd['username'] == 'Minkey27':
-            bot.sendMessage(msg['chat']['id'],
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
-                                "We will regret this i guess :("
-                            )
+        # If the user who send this message is blacklisted we will send them the default blacklisted message
+        if msg['from']['username'] is not None and msg['from']['username'] in config.blacklisted_usernames:
+            logging.warning("Someone from the blacklist is trying to send a message! Here are the details: {}"
+                .formmat(msg))
+
+            bot.sendMessage(msg['chat']['id'], config.blacklisted_message)
         else:
+            # User is not blacklisted so can send the message
 
             # Get the given command for the received message
             command = CommandFactory.get_command(msg['text'])

@@ -10,3 +10,35 @@ lookup_table = [
     ('dirk', '@djdirk'),
     ('vasco', '@Akatchi')
 ]
+
+# Blacklisted users who are forbidden from sending messages (usernames without @)
+blacklisted_usernames = [
+    'Minkey27',
+    'Mavee'
+]
+blacklisted_message = "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
+    "We will regret this i guess :("
