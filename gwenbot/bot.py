@@ -20,9 +20,9 @@ class TelegramBot(telepot.Bot):
             raise NotImplementedError
 
         # If the user who send this message is blacklisted we will send them the default blacklisted message
-        if msg['from']['username'] is not None and msg['from']['username'] in config.blacklisted_usernames:
+        if msg['from']['username'] in config.blacklisted_usernames:
             logging.warning("Someone from the blacklist is trying to send a message! Here are the details: {}"
-                .formmat(msg))
+                .format(msg))
 
             bot.sendMessage(msg['chat']['id'], config.blacklisted_message)
         else:
