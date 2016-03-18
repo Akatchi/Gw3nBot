@@ -13,9 +13,6 @@ lookup_table = [
 
 # Blacklisted users who are forbidden from sending messages (usernames without @)
 blacklisted_usernames = [
-    'Minkey27',
-    'Mavee',
-    'Akatchi',
 ]
 blacklisted_message = "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
     "Sorry mister :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27" \
