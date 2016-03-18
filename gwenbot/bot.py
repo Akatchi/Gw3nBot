@@ -18,13 +18,21 @@ class TelegramBot(telepot.Bot):
         if not content_type == 'text':
             raise NotImplementedError
 
-        # Get the given command for the received message
-        command = CommandFactory.get_command(msg['text'])
+        rnd = msg['from']
+        if rnd['username'] == 'Minkey27':
+            bot.sendMessage(msg['chat']['id'], "Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
+                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
+                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
+                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27")
+        else:
 
-        if command is not None:
-            command.execute(bot, msg)
+            # Get the given command for the received message
+            command = CommandFactory.get_command(msg['text'])
 
-        # TODO if we could not find a command model try a lookup in the database to retrieve the command
+            if command is not None:
+                command.execute(bot, msg)
+
+            # TODO if we could not find a command model try a lookup in the database to retrieve the command
 
 
 bot = TelegramBot(os.environ.get('TOKEN'))
