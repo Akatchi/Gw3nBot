@@ -20,10 +20,34 @@ class TelegramBot(telepot.Bot):
 
         rnd = msg['from']
         if rnd['username'] == 'Minkey27':
-            bot.sendMessage(msg['chat']['id'], "Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
-                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
-                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27"
-                                               "\n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27 \n Fuckyou :( bot hater @Minkey27 @Minkey27")
+            bot.sendMessage(msg['chat']['id'],
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "Sorry Yi :( How about this spam command :D :D :D :D :D :D @Minkey27 :D :D :D @Minkey27"
+                                "We will regret this i guess :("
+                            )
         else:
 
             # Get the given command for the received message
