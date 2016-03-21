@@ -1,5 +1,5 @@
 import sys
-from random import randint
+import random
 
 import requests
 import config
@@ -126,7 +126,9 @@ class TableFlipCommand(Command):
         self.description = "(╯°□°）╯︵ ┻━┻"
 
     def execute(self, bot, msg, *args, **kwargs):
-        bot.sendMessage(msg['chat']['id'], "(╯°□°）╯︵ ┻━┻")
+        listTables = ["┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻", "┻━┻ ︵﻿ ¯\(ツ)/¯ ︵ ┻━┻", "(ノಠ益ಠ)ノ彡┻━┻", "(╯°□°）╯︵ ┻━┻"]
+
+        bot.sendMessage(msg['chat']['id'], random.choice(listTables))
 
 
 class TableResetCommand(Command):
