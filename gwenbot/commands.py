@@ -79,6 +79,20 @@ class HelpCommand(Command):
         bot.sendMessage(msg['chat']['id'], help_text)
 
 
+class GiefCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/gief"
+        self.description = "つ ◕_◕ ༽つ" + GIEF + "つ ◕_◕ ༽つ"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        # If we have additional arguments obtain them
+        additional_args = get_additional_arguments(self)
+
+        bot.sendMessage(msg['chat']['id'], "つ ◕_◕ ༽つ GIEF " + str(additional_args) + " つ ◕_◕ ༽つ")
+
+
 class ShrugCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
