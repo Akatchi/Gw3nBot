@@ -90,7 +90,7 @@ class GiefCommand(Command):
         # If we have additional arguments obtain them
         additional_args = get_additional_arguments(self)
 
-        bot.sendMessage(msg['chat']['id'], "つ ◕_◕ ༽つ GIEF " + str(additional_args) + " つ ◕_◕ ༽つ")
+        bot.sendMessage(msg['chat']['id'], "つ ◕_◕ ༽つ GIEF " + str(additional_args).upper() + " つ ◕_◕ ༽つ")
 
 
 class ShrugCommand(Command):
