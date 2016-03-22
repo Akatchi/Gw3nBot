@@ -277,8 +277,8 @@ class SpamCommand(Command):
             amount = int(additional_args[0])
             value = ' '.join(additional_args[1:])
 
-            for x in range(0, amount):
-                bot.sendMessage(msg['chat']['id'], value)
+            # for x in range(0, amount):
+                # bot.sendMessage(msg['chat']['id'], value)
 
         else:
             bot.sendMessage(msg['chat']['id'], "Missing parameters for the spam command :( please RTFM!")
