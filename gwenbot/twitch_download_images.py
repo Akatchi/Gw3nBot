@@ -17,7 +17,7 @@ def get_twitch_images(*args):
         image_id = twitch_emotes['emotes'][twitch_emote]['image_id']
 
         # get the image template url
-        image_url = twitch_emotes['template'][args.get(1)]  # change this to small / medium / large
+        image_url = twitch_emotes['template'][args[0][1]]  # change this to small / medium / large
 
         # download the image
         image_request = requests.get(image_url.format(image_id=image_id), stream=True)
