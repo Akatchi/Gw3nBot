@@ -1,3 +1,4 @@
+import json
 import sys
 import random
 
@@ -277,11 +278,41 @@ class SpamCommand(Command):
             amount = int(additional_args[0])
             value = ' '.join(additional_args[1:])
 
-            # for x in range(0, amount):
-                # bot.sendMessage(msg['chat']['id'], value)
+            for x in range(0, amount):
+                bot.sendMessage(msg['chat']['id'], value)
 
         else:
             bot.sendMessage(msg['chat']['id'], "Missing parameters for the spam command :( please RTFM!")
+
+
+class TwitchEmotesCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/twitch"
+        self.description = "Usage: /twitch <emote>"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        emote_name = get_additional_arguments(self).split(" ")
+        size = emote_name[1] if len(emote_name) >= 2 else 1
+
+        twitch_emote = open('images/twitch_emotes/{}/{}.png'.format(size, emote_name[0]), 'rb')
+        bot.sendSticker(msg['chat']['id'], twitch_emote)
+
+
+class TwitchExplainEmoteCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/twitchpls"
+        self.description = "Usage: /twitchpls <emote> \n"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        emote_name = get_additional_arguments(self)
+        data = []
+        with open('images/twitch_emotes/descriptions.json') as data_file:
+            data = json.load(data_file)
+            bot.sendMessage(msg['chat']['id'], data[emote_name])
 
 
 def get_additional_arguments(obj):

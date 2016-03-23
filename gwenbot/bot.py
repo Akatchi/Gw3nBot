@@ -37,7 +37,7 @@ class TelegramBot(telepot.Bot):
             # TODO if we could not find a command model try a lookup in the database to retrieve the command
 
 
-bot = TelegramBot(os.environ.get('TOKEN'))
+bot = TelegramBot('152064553:AAGjuBPWzT-j_hM5C-YLGoNxY2xp1nGQ3G0')  #os.environ.get('TOKEN'))
 bot.notifyOnMessage()
 
 # Configure the logging:
