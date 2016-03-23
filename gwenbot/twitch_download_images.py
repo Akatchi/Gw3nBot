@@ -23,7 +23,7 @@ def get_twitch_images(*args):
         image_request = requests.get(image_url.format(image_id=image_id), stream=True)
 
         # save the image
-        with open('images/twitch_emotes/3/' + twitch_emote + ".png", 'wb') as image:
+        with open('images/twitch_emotes/'+args[0][1]+'/' + twitch_emote + ".png", 'wb') as image:
             for chunk in image_request.iter_content(10):
                 image.write(chunk)
 
