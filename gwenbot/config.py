@@ -12,7 +12,5 @@ lookup_table = [
 ]
 
 # Blacklisted users who are forbidden from sending messages (usernames without @)
-blacklisted_usernames = [
-    "Minkey27"
-]
+blacklisted_usernames = []
 blacklisted_message = "Get rekt"
