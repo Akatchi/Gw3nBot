@@ -30,7 +30,7 @@ def get_twitch_images(*args):
             size = '3'
 
         # save the image
-        with open('images/twitch_emotes/'+size+'/' + twitch_emote + ".png", 'wb') as image:
+        with open('images/twitch_emotes/'+size+'/' + twitch_emote.lower() + ".png", 'wb') as image:
             for chunk in image_request.iter_content(10):
                 image.write(chunk)
 
