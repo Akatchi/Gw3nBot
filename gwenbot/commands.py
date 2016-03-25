@@ -315,6 +315,19 @@ class TwitchExplainEmoteCommand(Command):
             bot.sendMessage(msg['chat']['id'], data[emote_name])
 
 
+class KeyboardCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/keyboard"
+        self.description = "Usage: /keyboard"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        additional_args = get_additional_arguments(self)
+        keyboard = {'keyboard': [['Ja','Nee'], ['Misschien', 'Misschien niet']]}
+        bot.sendMessage(msg['chat'[]['id']], "", reply_markup=keyboard)
+
+
 def get_additional_arguments(obj):
     """
     This method requires an object and will then check if this object has additional arguments.
