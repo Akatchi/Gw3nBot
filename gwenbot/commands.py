@@ -325,7 +325,7 @@ class KeyboardCommand(Command):
     def execute(self, bot, msg, *args, **kwargs):
         additional_args = get_additional_arguments(self)
         keyboard = {'keyboard': [['Ja','Nee'], ['Misschien', 'Misschien niet']]}
-        bot.sendMessage(msg['chat'[]['id']], "", reply_markup=keyboard)
+        bot.sendMessage(msg['chat']['id'], "custom keyboard mayb?", reply_markup=keyboard)
 
 
 def get_additional_arguments(obj):
