@@ -336,7 +336,7 @@ class TrollFaceCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         trollface = open('images/trollface.png', 'rb')
-        bot.sendPhoto(msg['chat']['id'], trollface)
+        bot.sendSticker(msg['chat']['id'], trollface)
 
 class TrollDadommand(Command):
     def __init__(self, *args, **kwargs):
@@ -347,7 +347,7 @@ class TrollDadommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         trolldad = open('images/trolldad.png', 'rb')
-        bot.sendPhoto(msg['chat']['id'], trolldad)
+        bot.sendSticker(msg['chat']['id'], trolldad)
 
 
 def get_additional_arguments(obj):
