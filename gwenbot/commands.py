@@ -327,6 +327,28 @@ class KeyboardCommand(Command):
         keyboard = {'keyboard': [['Ja','Nee'], ['Misschien', 'Misschien niet']]}
         bot.sendMessage(msg['chat']['id'], "custom keyboard mayb?", reply_markup=keyboard)
 
+class TrollFaceCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/trollface"
+        self.description = "Returns a 'trollface' image."
+
+    def execute(self, bot, msg, *args, **kwargs):
+        trollface = open('images/trollface.png', 'rb')
+        bot.sendDocument(msg['chat']['id'], trollface)
+
+class TrollDadommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/trolldad"
+        self.description = "Returns a 'trolldad' image."
+
+    def execute(self, bot, msg, *args, **kwargs):
+        trolldad = open('images/trolldad.png', 'rb')
+        bot.sendPhoto(msg['chat']['id'], trolldad)
+
 
 def get_additional_arguments(obj):
     """
