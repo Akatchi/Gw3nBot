@@ -336,7 +336,7 @@ class TrollFaceCommand(Command):
 
     def execute(self, bot, msg, *args, **kwargs):
         trollface = open('images/trollface.png', 'rb')
-        bot.sendDocument(msg['chat']['id'], trollface)
+        bot.sendPhoto(msg['chat']['id'], trollface)
 
 class TrollDadommand(Command):
     def __init__(self, *args, **kwargs):
