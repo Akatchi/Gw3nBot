@@ -285,6 +285,20 @@ class SpamCommand(Command):
             bot.sendMessage(msg['chat']['id'], "Missing parameters for the spam command :( please RTFM!")
 
 
+class PokeButtCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/pokebutt"
+        self.description = "Usage: /pokebutt <id> (1 - 24)"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        pokedex_id = get_additional_arguments(self).split(" ")
+
+        pokebutt = open('images/pokebutt/{}.png'.format(pokedex_id[0]), 'rb')
+        bot.sendPhoto(msg['chat']['id'], pokebutt)
+
+
 class TwitchEmotesCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
@@ -297,7 +311,7 @@ class TwitchEmotesCommand(Command):
         size = emote_name[1] if len(emote_name) >= 2 else 1
 
         twitch_emote = open('images/twitch_emotes/{}/{}.png'.format(size, emote_name[0]), 'rb')
-        bot.sendSticker(msg['chat']['id'], twitch_emote)
+        bot. Sticker(msg['chat']['id'], twitch_emote)
 
 
 class TwitchExplainEmoteCommand(Command):
@@ -327,6 +341,7 @@ class KeyboardCommand(Command):
         keyboard = {'keyboard': [['Ja','Nee'], ['Misschien', 'Misschien niet']]}
         bot.sendMessage(msg['chat']['id'], "custom keyboard mayb?", reply_markup=keyboard)
 
+
 class TrollFaceCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
@@ -338,7 +353,8 @@ class TrollFaceCommand(Command):
         trollface = open('images/trollface.png', 'rb')
         bot.sendSticker(msg['chat']['id'], trollface)
 
-class TrollDadommand(Command):
+
+class TrollDadCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
 
