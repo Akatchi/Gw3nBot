@@ -94,6 +94,20 @@ class GiefCommand(Command):
         bot.sendMessage(msg['chat']['id'], "つ ◕_◕ ༽つ GIEF " + str(additional_args).upper() + " つ ◕_◕ ༽つ")
 
 
+class MadCommand(Command):
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+
+        self.query = "/mad"
+        self.description = "MAD?"
+
+    def execute(self, bot, msg, *args, **kwargs):
+        # If we have additional arguments obtain them
+        additional_args = get_additional_arguments(self)
+
+        bot.sendMessage(msg['chat']['id'], "are u mad? CUZ IM NOT " + str(additional_args).upper())
+
+
 class ShrugCommand(Command):
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
