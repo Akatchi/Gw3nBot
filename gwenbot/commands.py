@@ -325,7 +325,7 @@ class TwitchEmotesCommand(Command):
         size = emote_name[1] if len(emote_name) >= 2 else 1
 
         twitch_emote = open('images/twitch_emotes/{}/{}.png'.format(size, emote_name[0]), 'rb')
-        bot. Sticker(msg['chat']['id'], twitch_emote)
+        bot.sendSticker(msg['chat']['id'], twitch_emote)
 
 
 class TwitchExplainEmoteCommand(Command):
